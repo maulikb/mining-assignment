@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Upload</h2>
+  <h2>Select CSV File....</h2>
+  <br>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="document">
-    <button type="submit">Upload file</button>
+    <button type="submit" class="btn btn-outline-dark">Upload file</button>
   </form>
- {% if url %}
-    <img src = "{% static 'Tree_of_diabetes.png' %}" width="100%" height="25%"/>
+  {% if image_name %}
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="height:auto">
+        <img src = "/media/{{image_name}}" id="result_image" width="100%"/>
+      </div>
+    </div>
+  </div>
   {% endif %}
 {% endblock %}

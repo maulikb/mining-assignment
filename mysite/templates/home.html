@@ -1,14 +1,27 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-  <h2 class="card-title">Django File Upload Tutorial</h2>
-  <p class="card-text">Example Django 2.1 / Python 3.7</p>
+  <h2 class="card-title">Decision Tree Genrator Using Gini Index</h2>
+  <h4 class="card-title"> What Is Decision Tree</h4>
+  <ul>
+    <li>
+      Decision tree algorithm falls under the category of supervised learning. They can be used to solve both regression and classification problems.
+    </li>
+    <li>
+      Decision tree uses the tree representation to solve the problem in which each leaf node corresponds to a class label and attributes are represented on the internal node of the tree.
+    </li>
+    <li>
+      We can represent any boolean function on discrete attributes using the decision tree.
+    </li>
+  </ul>
+
+  <div class="container" style="text-align:center;">
+      <img src="{% static 'decision-tree.png' %}" />
+  </div>
   <p class="card-text">
-    Watch it on <a href="https://www.youtube.com/playlist?list=PLLxk3TkuAYnpm24Ma1XenNeq1oxxRcYFT">YouTube</a> or
-    read the <a href="https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html">Blog Post</a>.
+    
   </p>
   <p class="card-text">
-    Vitor Freitas<br>
-    <a href="https://twitter.com/vitorfs">@vitorfs</a>
+  
   </p>
 {% endblock %}
