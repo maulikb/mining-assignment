@@ -67,7 +67,7 @@ def upload(request):
                         special_characters=True,feature_names = feature_cols,class_names=['0','1'])
         graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
         graph.write_png(image_url)
-        imge = Image(graph.create_png())
+      
 
         
         fs = FileSystemStorage()
