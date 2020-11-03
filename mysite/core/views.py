@@ -3,9 +3,10 @@ from django.views.generic import TemplateView, ListView, CreateView
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse_lazy
 from django.core.files import File
-
-from .forms import BookForm
-from .models import Book
+from django.conf import settings
+from wsgiref.util import FileWrapper
+from django.http import HttpResponse
+import mimetypes
 # Load libraries
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
@@ -27,7 +28,7 @@ def upload(request):
     context = {}
     upload_file_name = ""
     image_url = ""
-  
+    
     if request.method == 'POST':
         uploaded_file = request.FILES['document']
         image_url = "Tree_of_"+str(os.path.splitext(uploaded_file.name)[0]) + ".png" 
@@ -81,5 +82,6 @@ def upload(request):
         print(path_to_generated_image)
         context['image_name'] = name_of_image 
     return render(request, 'upload.html', context)
+   
 
 

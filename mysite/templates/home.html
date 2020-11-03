@@ -2,7 +2,9 @@
 {% load static %}
 {% block content %}
   <h2 class="card-title">Decision Tree Genrator Using Gini Index</h2>
+  <hr>
   <h4 class="card-title"> What Is Decision Tree</h4>
+  
   <ul>
     <li>
       Decision tree algorithm falls under the category of supervised learning. They can be used to solve both regression and classification problems.
@@ -18,10 +20,26 @@
   <div class="container" style="text-align:center;">
       <img src="{% static 'decision-tree.png' %}" />
   </div>
-  <p class="card-text">
-    
-  </p>
-  <p class="card-text">
+  <hr>
+
+  <h4 class="card-title">Tree Generation Using Gini Index</h4>  
+  <h5 class="card-title">Gini Index</h5>
+  <ul>
+    <li>
+      Gini Index is a metric to measure how often a randomly chosen element would be incorrectly identified.
+    </li>
+    <li>
+      It means an attribute with lower Gini index should be preferred.
+    </li>
+    <li>
+      Sklearn supports “Gini” criteria for Gini Index and by default, it takes “gini” value.
+    </li>
+  </ul>
+  <br>
+  <h4 class="card-title">Formula Of Gini Index :</h4>
+  <div class="card-body" style="box-shadow:inset 0 0 10px #000000;text-align:center">
+    <img src="{% static 'gini_index.png' %}" />
+
+  </div>
   
-  </p>
 {% endblock %}

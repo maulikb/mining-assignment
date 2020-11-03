@@ -1,22 +1,48 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-  <h2>Select CSV File....</h2>
-  <br>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="document">
-    <button type="submit" class="btn btn-outline-dark">Upload file</button>
-  </form>
-  {% if image_name %}
-  <br>
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12" style="height:auto">
-        <img src = "/media/{{image_name}}" id="result_image" width="100%"/>
-      </div>
+
+<h2>Select CSV File....</h2>
+<br>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="document">
+  <button type="submit" class="btn btn-outline-dark">Submit file</button>
+</form>
+{% if image_name %}
+<br>
+<br>
+<h2 class="card-title">Decesion-Tree:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" style="height:100%;padding:10px">
+      <img src="/media/{{image_name}}" id="result_image" width="100%" />
+      <div class="downloadButton">
+      <button class="btn btn-outline-dark"  style="float: right;">
+        <a href="/media/{{image_name}}" id= "link_to_image" style="text-decoration:none;color:black"  download>
+          Download
+          <img src="{% static 'download.png' %}" style="height: 20px;width:20px" />
+        </a>
+      </button>
+    </div>
     </div>
   </div>
-  {% endif %}
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".downloadButton").hover(()=>{
+      console.log("Button is HOvered")
+      $("#link_to_image").css("color", "white" )
+    },
+    ()=>{
+      $("#link_to_image").css("color", "black" )
+    }
+    )
+    
+  });
+
+</script>
+
+{% endif %}
 {% endblock %}
