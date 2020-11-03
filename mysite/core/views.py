@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split # Import train_test_split f
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
 from sklearn.tree import export_graphviz
 from six import StringIO  
-from IPython.display import Image  
+
 import os
 import pydotplus  
 
