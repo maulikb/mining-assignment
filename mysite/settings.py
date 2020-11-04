@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'responsive',
     'crispy_forms',
 
     'mysite.core',
@@ -52,7 +52,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  
+    'responsive.middleware.ResponsiveMiddleware'
+    
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -74,6 +76,41 @@ TEMPLATES = [
         },
     },
 ]
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'responsive.context_processors.device',
+)
+
+
+RESPONSIVE_MEDIA_QUERIES = {
+    'small': {
+     
+        'min_width': None,
+        'max_width': 640,
+    },
+    'medium': {
+    
+        'min_width': 641,
+        'max_width': 1024,
+    },
+    'large': {
+      
+        'min_width': 1025,
+        'max_width': 1440,
+    },
+    'xlarge': {
+      
+        'min_width': 1441,
+        'max_width': 1920,
+    },
+    'xxlarge': {
+      
+        'min_width': 1921,
+        'max_width': None,
+    }
+}
+
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
