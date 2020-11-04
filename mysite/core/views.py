@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView, CreateView
 from django.core.files.storage import FileSystemStorage
@@ -12,11 +13,11 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn.model_selection import train_test_split # Import train_test_split function
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
-
 from sklearn.tree import export_graphviz
 from six import StringIO  
+from IPython.display import Image
 import os
-
+import pydotplus  
 
 BASE_DIR = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) 
 
@@ -30,6 +31,8 @@ def upload(request):
     image_url = ""
     
     if request.method == 'POST':
+        if request.FILES['document'] is None:
+            return HttpResponseRedirect('upload.html')
         uploaded_file = request.FILES['document']
         image_url = "Tree_of_"+str(os.path.splitext(uploaded_file.name)[0]) + ".png" 
         dataset_cols_name = []
@@ -67,12 +70,13 @@ def upload(request):
                         special_characters=True,feature_names = feature_cols,class_names=['0','1'])
         graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
         graph.write_png(image_url)
-      
+        image  = Image(graph.create_png())
 
         
         fs = FileSystemStorage()
         upload_file_name = uploaded_file
-        path_to_generated_image = os.path.abspath(os.path.join(os.getcwd(), os.pardir))+"\\django-upload-example\\"+ image_url
+        path_to_generated_image = os.path.abspath(os.path.join(os.getcwd(), os.pardir))+"//maulikbeladiya//mining-assignment//"+ image_url
+        print(path_to_generated_image)
         file = open(path_to_generated_image , "rb")
         django_file = File(file)
 

@@ -6,8 +6,20 @@
 <br>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <input type="file" name="document">
-  <button type="submit" class="btn btn-outline-dark">Submit file</button>
+ 
+ 
+  
+
+<div class="row ">
+  <div class="col-lg-6 col-sm-8 form-group " class="choose_file">
+  <input type="file"  required name="document">
+</div>
+
+  <div class="col-lg-6 col-sm-4 form-group" class="submit_file">
+    <button type="submit" class="btn btn-outline-dark">Submit file</button>
+
+  </div>
+</div>
 </form>
 {% if image_name %}
 <br>
@@ -18,10 +30,10 @@
     <div class="col-md-12" style="height:100%;padding:10px">
       <img src="/media/{{image_name}}" id="result_image" width="100%" />
       <div class="downloadButton">
-      <button class="btn btn-outline-dark"  style="float: right;">
+      <button class="btn btn-outline-dark"  style="float: right;margin-bottom:-2px;">
         <a href="/media/{{image_name}}" id= "link_to_image" style="text-decoration:none;color:black"  download>
           Download
-          <img src="{% static 'download.png' %}" style="height: 20px;width:20px" />
+          <i class="fa fa-download" ></i>
         </a>
       </button>
     </div>
